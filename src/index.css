@@ -9,26 +9,27 @@
 @import "tailwindcss/utilities.css" layer(utilities);
 
 @theme {
-	--color-b-green: #308a4e;
+  --color-header: #308a4e;
+  /* --color-header: red; */
 }
 
 /* Root styles */
 :root {
-	color-scheme: light;
-	font-family: "Poppins", sans-serif;
-	background-color: #ffffff;
-	color: #111827;
+  color-scheme: light;
+  font-family: "Poppins", sans-serif;
+  background-color: #ffffff;
+  color: #111827;
 }
 
 /* Body reset and layout */
 body {
-	margin: 0;
-	padding: 0;
-	width: 100%;
-	min-height: 100vh;
-	font-family: inherit;
-	background-color: inherit;
-	color: inherit;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  font-family: inherit;
+  background-color: inherit;
+  color: inherit;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

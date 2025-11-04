@@ -46,7 +46,7 @@ const Login = () => {
             />
           </Form.Item>
           <div className="w-full bg-amber-200">
-            <Button type="primary" className="w-full font-bold">
+            <Button type="primary" className="w-full font-bold" href="/admin">
               Login
             </Button>
           </div>
