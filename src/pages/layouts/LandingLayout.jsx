@@ -1,43 +1,77 @@
 import {
   ContainerOutlined,
   DesktopOutlined,
+  MailOutlined,
   PieChartOutlined,
 } from "@ant-design/icons";
-import { Layout, Menu } from "antd";
+import { rbLogo } from "@assets/images";
+import { Button, Layout, Menu } from "antd";
 import { Content, Header } from "antd/es/layout/layout";
 import Sider from "antd/es/layout/Sider";
-import React, { useEffect, useState } from "react";
-import { Outlet, useLocation } from "react-router";
+import React from "react";
+import { Link, Outlet } from "react-router";
 
 const LandingLayout = () => {
-  // const [selectedKey, setSelectedKey] = useState("");
-  const location = useLocation();
-
-  // useEffect(() => {
-  //   const pathName = location.pathname.split("/").pop();
-  //   setSelectedKey(pathName);
-  // }, [location.pathname]);
-
   const items = [
-    { key: "1", icon: <PieChartOutlined />, label: "Option 1" },
-    { key: "2", icon: <DesktopOutlined />, label: "Option 2" },
-    { key: "3", icon: <ContainerOutlined />, label: "Option 3" },
+    {
+      key: "1",
+      icon: <PieChartOutlined />,
+      label: <Link to={"/admin"}>Home</Link>,
+    },
+    {
+      key: "2",
+      icon: <PieChartOutlined />,
+      label: <Link to={"/map"}>Map</Link>,
+    },
+    // {
+    //   key: "sub1",
+    //   label: "Navigation One",
+    //   icon: <MailOutlined />,
+    //   children: [
+    //     { key: "5", label: "Option 5" },
+    //     { key: "6", label: "Option 6" },
+    //     { key: "7", label: "Option 7" },
+    //     { key: "8", label: "Option 8" },
+    //   ],
+    // },
   ];
   return (
     <Layout className="h-screen">
-      <Header className="bg-header h-[55px] px-12 items-center flex justify-between">
-        <div className="bg-red-500 ">LOGO HERE</div>
-        <span className="bg-red-500 text-xl font-bold text-white">HEADER</span>
-        <div className="bg-red-500 flex gap-4 text-lg text-white font-semibold">
-          <span>User</span>
-          <span>Logout</span>
+      <Header
+        className="bg-header h-16 px-12 items-center flex justify-between"
+        style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.3)", zIndex: 1 }}
+      >
+        <div className=" w-full h-full items-center grid grid-cols-3 p-0">
+          <span className=""></span>
+          <span className=" text-xl text-center font-bold text-white text-shadow-md">
+            HEADER
+          </span>
+          <div className=" flex gap-4 justify-end">
+            <Button
+              type="text"
+              className="text-lg text-white font-semibold hover:bg-transparent!"
+            >
+              User
+            </Button>
+
+            <Button
+              type="text"
+              className="text-lg text-white font-semibold hover:bg-transparent!"
+            >
+              Logout
+            </Button>
+          </div>
         </div>
       </Header>
       <Layout>
-        <Sider width={300} className=" bg-white">
-          <div className="flex flex-col bg-yellow-300 p-4 items-center gap-4">
-            <div className="bg-red-500 text-center h-40 w-40 rounded-2xl justify-center items-center flex">
-              OR LOGO HERE
+        <Sider
+          width={300}
+          className=" bg-white h-full w-full overflow-auto border-r border-black/20"
+          // style={{ boxShadow: "2px 0 8px rgba(0,0,0,0.15)", zIndex: 2 }}
+        >
+          <div className="flex flex-col  items-center">
+            <div className=" text-center h-40 w-40 rounded-2xl justify-center items-center flex my-8">
+              <img src={rbLogo} alt="logo" className="w-full" />
             </div>
 
             {/* <Menu
@@ -55,10 +89,11 @@ const LandingLayout = () => {
               // theme="dark"
               inlineCollapsed={false}
               items={items}
+              className="p-0"
             />
           </div>
         </Sider>
-        <Content className="">
+        <Content className="bg-white p-2 h-full w-full overflow-auto">
           <Outlet />
         </Content>
       </Layout>
