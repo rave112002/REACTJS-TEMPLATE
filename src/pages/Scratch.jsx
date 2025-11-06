@@ -47,7 +47,51 @@ const Scratch = () => {
         </Button>
       </div>
 
-      <div className="bg-green-400">hi</div>
+      <div className=" flex flex-col gap-2">
+        {/* approved */}
+        <div className="border-3 rounded-2xl border-gray-300 py-2 px-6 justify-between flex">
+          <div className="flex gap-4">
+            <CircleCheckBig size={56} className="h-full text-green-500" />
+            <div className="flex flex-col">
+              <span className="text-lg font-semibold">Barangay Clearance</span>
+              <span className="text-base">
+                REQ-2025-001 • Submitted: 2025-10-18
+              </span>
+              <span className="text-base font-semibold text-green-500">
+                Ready for pickup: 10/25/2025
+              </span>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-center w-40">
+            <span className="text-base bg-green-500 py-1 px-4 font-bold text-white rounded-2xl">
+              Approved
+            </span>
+          </div>
+        </div>
+
+        {/* pending */}
+        <div className="border-3 rounded-2xl border-gray-300 py-2 px-6 justify-between flex">
+          <div className="flex gap-4">
+            <CircleCheckBig size={56} className="h-full text-green-500" />
+            <div className="flex flex-col">
+              <span className="text-lg font-semibold">Barangay Clearance</span>
+              <span className="text-base">
+                REQ-2025-001 • Submitted: 2025-10-18
+              </span>
+              <span className="text-base font-semibold text-green-500">
+                Ready for pickup: 10/25/2025
+              </span>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-center w-40">
+            <span className="text-base bg-green-500 py-1 px-4 font-bold text-white rounded-2xl">
+              Approved
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
