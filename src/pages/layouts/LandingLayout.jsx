@@ -5,6 +5,7 @@ import {
   PieChartOutlined,
 } from "@ant-design/icons";
 import { rbLogo } from "@assets/images";
+import { MODULES } from "@constants/menu";
 import { Button, Layout, Menu } from "antd";
 import { Content, Header } from "antd/es/layout/layout";
 import Sider from "antd/es/layout/Sider";
@@ -12,34 +13,34 @@ import React from "react";
 import { Link, Outlet } from "react-router";
 
 const LandingLayout = () => {
-  const items = [
-    {
-      key: "1",
-      icon: <PieChartOutlined />,
-      label: <Link to={"/admin"}>Home</Link>,
-    },
-    {
-      key: "2",
-      icon: <PieChartOutlined />,
-      label: <Link to={"/map"}>Map</Link>,
-    },
-    {
-      key: "3",
-      icon: "",
-      label: <Link to={"/scratch"}>Scratch</Link>,
-    },
-    // {
-    //   key: "sub1",
-    //   label: "Navigation One",
-    //   icon: <MailOutlined />,
-    //   children: [
-    //     { key: "5", label: "Option 5" },
-    //     { key: "6", label: "Option 6" },
-    //     { key: "7", label: "Option 7" },
-    //     { key: "8", label: "Option 8" },
-    //   ],
-    // },
-  ];
+  const extractMenu = (modules) => {
+    let items = [];
+    modules.forEach((module) => {
+      if (module.type === "group" && Array.isArray(module.children)) {
+        const children = module.children.map((child) => ({
+          key: child.value,
+          icon: child.icon,
+          label: <Link to={child.link}>{child.label}</Link>,
+        }));
+        items.push({
+          key: module.value,
+          icon: module.icon,
+          label: module.label,
+          children: children,
+        });
+      } else if (module.type === "item") {
+        items.push({
+          key: module.value,
+          icon: module.icon,
+          label: <Link to={module.link}>{module.label}</Link>,
+        });
+      }
+    });
+    return items;
+  };
+
+  const menuItems = extractMenu(MODULES);
+
   return (
     <Layout className="h-screen">
       <Header
@@ -93,7 +94,7 @@ const LandingLayout = () => {
               mode="inline"
               // theme="dark"
               inlineCollapsed={false}
-              items={items}
+              items={menuItems}
               className="p-0"
             />
           </div>

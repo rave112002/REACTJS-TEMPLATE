@@ -3,7 +3,7 @@ import LandingLayout from "@pages/layouts/LandingLayout";
 import Login from "@pages/Login";
 import Home from "@pages/Home";
 import SecondPage from "@pages/SecondPage";
-import Scratch from "@pages/Scratch";
+import { MODULES } from "@constants/menu";
 
 const NotFound = () => (
   <div className="h-dvh bg-header flex flex-col items-center justify-center">
@@ -14,6 +14,25 @@ const NotFound = () => (
   </div>
 );
 
+const extractRoutes = (modules) => {
+  let routes = [];
+  modules.forEach((module) => {
+    if (module.type === "item" && module.link && module.element) {
+      routes.push({ path: module.link, element: module.element });
+    }
+    if (module.type === "group" && Array.isArray(module.children)) {
+      module.children.forEach((child) => {
+        if (child.link && child.element) {
+          routes.push({ path: child.link, element: child.element });
+        }
+      });
+    }
+  });
+  return routes;
+};
+
+const routes = extractRoutes(MODULES);
+
 const Routers = () => {
   return (
     <Routes>
@@ -22,9 +41,9 @@ const Routers = () => {
 
       {/* Admin route inside layout */}
       <Route element={<LandingLayout />}>
-        <Route path="admin" element={<Home />} />
-        <Route path="map" element={<SecondPage />} />
-        <Route path="scratch" element={<Scratch />} />
+        {routes.map(({ path, element }) => (
+          <Route key={path} path={path} element={element} />
+        ))}
       </Route>
 
       {/* Catch-all 404 with redirect */}
