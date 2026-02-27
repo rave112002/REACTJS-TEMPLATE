@@ -3,8 +3,8 @@ import {
   CloudOutlined,
   GlobalOutlined,
 } from "@ant-design/icons";
-import Home from "@pages/Home";
-import SecondPage from "@pages/SecondPage";
+import Home from "@pages/CMS/Home";
+import SecondPage from "@pages/CMS/SecondPage";
 
 export const MODULES = [
   {

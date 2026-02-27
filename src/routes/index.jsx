@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
-import LandingLayout from "@pages/layouts/LandingLayout";
+import CMSLayout from "@components/layouts/CMSLayout";
 import Login from "@pages/Login";
-import Home from "@pages/Home";
-import SecondPage from "@pages/SecondPage";
+import Home from "@pages/CMS/Home";
+import SecondPage from "@pages/CMS/SecondPage";
 import { MODULES } from "@constants/menu";
 
 const NotFound = () => (
@@ -40,7 +40,7 @@ const Routers = () => {
       <Route path="/" element={<Login />} />
 
       {/* Admin route inside layout */}
-      <Route element={<LandingLayout />}>
+      <Route element={<CMSLayout />}>
         {routes.map(({ path, element }) => (
           <Route key={path} path={path} element={element} />
         ))}

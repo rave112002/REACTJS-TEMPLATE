@@ -26,3 +26,4 @@ snake_case - for database tables and columns.
 All global colors must be declared in @theme.
 Use Tailwind token names directly (bg-green, bg-green-hover, etc.).
 Avoid inline styles for colors — use variables for theme consistency.
+
