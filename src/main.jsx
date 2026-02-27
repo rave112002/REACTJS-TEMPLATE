@@ -21,6 +21,7 @@ createRoot(document.getElementById("root")).render(
         theme={{
           token: {
             colorPrimary: "#0066cc",
+            fontFamily: "Poppins, sans-serif",
           },
           components: {},
         }}
